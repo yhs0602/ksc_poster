@@ -1,0 +1,42 @@
+name: Compile Typst to SVG
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Typst
+      run: |
+        wget -O typst.tar.gz https://github.com/typst/typst/releases/download/v0.1.0/typst-linux-x86_64.tar.gz
+        tar -xzf typst.tar.gz
+        sudo mv typst /usr/local/bin
+
+    - name: Compile Typst to SVG
+      run: typst compile path/to/your/file.typ -o output.svg
+
+    - name: Upload SVG to Gist
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
+      run: |
+        gist_id="your_gist_id"
+        file_name="output.svg"
+        curl -X PATCH \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -d @- https://api.github.com/gists/$gist_id <<EOF
+        {
+          "files": {
+            "$file_name": {
+              "content": "$(cat output.svg)"
+            }
+          }
+        }
+EOF
+
