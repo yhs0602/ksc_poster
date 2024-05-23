@@ -26,6 +26,7 @@ jobs:
       run: |
         gist_id="232e43e34ab57b5e58313db1efcf71fe"
         file_name="ksc_poster.svg"
+        svg_content=$(cat output.svg | jq -Rs .)
         curl -X PATCH \
           -H "Authorization: Bearer $GITHUB_TOKEN" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
@@ -34,7 +35,7 @@ jobs:
             "description": "Updated svg",
             "files": {
               "$file_name": {
-                "content": $(cat output.svg)
+                "content": '"$svg_content"'
               }
             }
           }'
