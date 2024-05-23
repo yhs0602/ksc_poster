@@ -20,14 +20,14 @@ jobs:
         sudo mv typst /usr/local/bin
 
     - name: Compile Typst to SVG
-      run: typst compile path/to/your/file.typ -o output.svg
+      run: typst compile ksc_poster.typ -o output.svg
 
     - name: Upload SVG to Gist
       env:
         GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
       run: |
-        gist_id="your_gist_id"
-        file_name="output.svg"
+        gist_id="232e43e34ab57b5e58313db1efcf71fe"
+        file_name="ksc_poster.svg"
         curl -X PATCH \
           -H "Authorization: token $GITHUB_TOKEN" \
           -d @- https://api.github.com/gists/$gist_id <<EOF
@@ -38,5 +38,3 @@ jobs:
             }
           }
         }
-EOF
-
