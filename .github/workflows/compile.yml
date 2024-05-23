@@ -15,9 +15,7 @@ jobs:
 
     - name: Install Typst
       run: |
-        wget -O typst.tar.gz https://github.com/typst/typst/releases/download/v0.1.0/typst-linux-x86_64.tar.gz
-        tar -xzf typst.tar.gz
-        sudo mv typst /usr/local/bin
+        sudo snap install typst
 
     - name: Compile Typst to SVG
       run: typst compile ksc_poster.typ -o output.svg
