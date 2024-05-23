@@ -35,7 +35,7 @@ jobs:
             "description": "Updated svg",
             "files": {
               "$file_name": {
-                "content": '"$svg_content"'
+                "content": $svg_content
               }
             }
           }'
