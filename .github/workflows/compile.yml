@@ -32,12 +32,6 @@ jobs:
           -H "Authorization: Bearer $GITHUB_TOKEN" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           https://api.github.com/gists/$gist_id \
-          -d '{
-            "description": "Updated svg",
-            "files": {
-              "$file_name": {
-                "content": "$svg_content"
-              }
-            }
-          }'
+          -d "$(jq -n --arg desc "Updated svg" --arg file_name "$file_name" --arg content "$svg_content" \
+            '{description: $desc, files: {($file_name): {content: $content}}}')"
         
