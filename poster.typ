@@ -130,7 +130,7 @@
     if it.level == 1 [
       // First-level headings are centered smallcaps.
       #set align(center)
-      #set text({ 32pt })
+      #set text({ 27pt })
       #show: smallcaps
       #v(50pt, weak: true)
       #if it.numbering != none {
