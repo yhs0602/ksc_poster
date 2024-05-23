@@ -34,7 +34,7 @@ jobs:
             "description": "Updated svg",
             "files": {
               "$file_name": {
-                "content": "$(cat output.svg)"
+                "content": $(cat output.svg)
               }
             }
           }'
