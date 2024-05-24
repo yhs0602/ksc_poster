@@ -37,14 +37,15 @@
 )
 #lorem(10)
 
-= 새로운 강화학습 환경 CraftGround 소개.
-#lorem(30)
+= 새로운 강화학습 환경 CraftGround
+== 기존 마인크래프트 기반 강화학습 환경
+- MineDojo@minedojo~: 마인크래프트 환경에서의 강화학습을 위한 플랫폼
+- MineRL@minerl~: 마인크래프트 환경에서의 강화학습을 위한 플랫폼
+== 기존 환경과의 차별점
+- 최신 버전의 마인크래프트 지원, 업데이트 용이
+- 고성능 (300TPS): protobuf와 unix domain socket 사용
+- 다양한 관측 공간 제공: 소리, 통계, 사망 원인 등
 
-+ #lorem(10)
-+ #lorem(10)
-+ #lorem(10)
-
-#lorem(50)
 
 #set align(center)
 #table(
@@ -58,14 +59,15 @@
 )
 
 #set align(left)
-#lorem(80)
+#lorem(10)
 $ mat(
   1, 2, ..., 8, 9, 10;
   2, 2, ..., 8, 9, 10;
   dots.v, dots.v, dots.down, dots.v, dots.v, dots.v;
   10, 10, ..., 10, 10, 10;
 ) $
-== #lorem(5)
+= 실험
+== 환경
 
 #lorem(65)
 #figure(
@@ -73,7 +75,7 @@ $ mat(
   caption: [#lorem(8)]
 )
 
-= #lorem(3)
+== 입력의 인코딩
 
 #block(
   fill: luma(230),
@@ -85,5 +87,11 @@ $ mat(
   ]
 )
 #lorem(30)
+
+== 모델
+
+= 결과
+
+= 결론
 
 #bibliography("citation.bib")
