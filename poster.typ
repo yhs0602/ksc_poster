@@ -16,6 +16,8 @@
   // University logo.
   univ_logo: "Logo Path",
 
+  logo: "Logo Path",
+
   // Footer text.
   // For instance, Name of Conference, Date, Location.
   // or Course Name, Date, Instructor.
@@ -49,6 +51,8 @@
   // University logo's column size (in in).
   univ_logo_column_size: "10",
 
+  logo_scale: "100",
+
   // Title and authors' column size (in in).
   title_column_size: "20",
 
@@ -68,11 +72,12 @@
   body
 ) = {
   // Set the body font.
-  set text(font: "Pretendard", size: 16pt)
+  set text(font: "Pretendard", size: 20pt)
   let sizes = size.split("x")
   let width = int(sizes.at(0)) * 1in
   let height = int(sizes.at(1)) * 1in
   univ_logo_scale = int(univ_logo_scale) * 1%
+  logo_scale = int(logo_scale) * 1%
   title_font_size = int(title_font_size) * 1pt
   authors_font_size = int(authors_font_size) * 1pt
   num_columns = int(num_columns)
@@ -87,7 +92,7 @@
     width: width,
     height: height,
     margin: 
-      (top: 1in, left: 2in, right: 2in, bottom: 2in),
+      (top: 1in, left: 1in, right: 1in, bottom: 2in),
     footer: [
       #set align(center)
       #set text(32pt)
@@ -132,18 +137,18 @@
       #set align(center)
       #set text({ 27pt })
       #show: smallcaps
-      #v(50pt, weak: true)
+      #v(30pt, weak: true)
       #if it.numbering != none {
         numbering("I.", deepest)
         h(7pt, weak: true)
       }
       #it.body
-      #v(35.75pt, weak: true)
+      #v(20pt, weak: true)
       #line(length: 100%)
     ] else if it.level == 2 [
       // Second-level headings are run-ins.
       #set text(style: "italic")
-      #v(32pt, weak: true)
+      #v(15pt, weak: true)
       #if it.numbering != none {
         numbering("i.", deepest)
         h(7pt, weak: true)
@@ -164,13 +169,14 @@
   align(center,
     grid(
       rows: 2,
-      columns: (univ_logo_column_size, title_column_size),
+      columns: (univ_logo_column_size, title_column_size, univ_logo_column_size),
       column-gutter: 0pt,
       row-gutter: 50pt,
       image(univ_logo, width: univ_logo_scale),
       text(title_font_size, title + "\n\n") + 
       text(authors_font_size, emph(authors) + 
           "   (" + departments + ") "),
+      image(logo, width: logo_scale),
     )
   )
 
